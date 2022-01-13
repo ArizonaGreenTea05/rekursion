@@ -22,17 +22,26 @@ public class Rekursion {
 
 
     private static void rekursion03(int i){
-        // Abbruchbedingung
-        // Trivialfall / Elementarfall ==> NICHT-rekursiver Fall
-        if(i == 10) {
+        if(i == 0) {
             System.out.println("Stopp!");
         } else {
             System.out.println(i);
-            rekursion03(i+1);
+            rekursion03(i-1);
+        }
+    }
+
+
+
+    private static void rekursion04(int i){
+        if(i > 10) {
+            System.out.println("Stopp!");
+        } else {
+            System.out.println(i);
+            rekursion04(i+1);
         }
     }
 
     public static void main(String[] args) {
-        rekursion03(0);
+        rekursion04(0);
     }
 }
