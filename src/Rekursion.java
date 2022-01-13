@@ -33,15 +33,16 @@ public class Rekursion {
 
 
     private static void rekursion04(int i){
-        if(i > 10) {
+        if(i == 0) {
             System.out.println("Stopp!");
         } else {
+            // folgende zwei Zeilen vertauscht (im Vergleich zu 03)
+            rekursion04(i-1);
             System.out.println(i);
-            rekursion04(i+1);
         }
     }
 
     public static void main(String[] args) {
-        rekursion04(0);
+        rekursion04(5);
     }
 }
