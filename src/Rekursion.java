@@ -8,7 +8,6 @@ public class Rekursion {
     }
 
 
-
     private static void rekursion02(){
         // Abbruchbedingung
         // Trivialfall / Elementarfall ==> NICHT-rekursiver Fall
@@ -18,7 +17,6 @@ public class Rekursion {
             rekursion02();
         }
     }
-
 
 
     private static void rekursion03(int i){
@@ -31,7 +29,6 @@ public class Rekursion {
     }
 
 
-
     private static void rekursion04(int i){
         if(i == 0) {
             System.out.println("Stopp!");
@@ -42,7 +39,18 @@ public class Rekursion {
         }
     }
 
+
+    private static void rekursion05(int i){
+        if(i == 0) {
+            System.out.println("Stopp!");
+        } else {
+            System.out.println(i);
+            rekursion05(i-1);
+            System.out.println(i);
+        }
+    }
+
     public static void main(String[] args) {
-        rekursion04(5);
+        rekursion05(5);
     }
 }
