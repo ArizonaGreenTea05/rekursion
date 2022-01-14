@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class Rekursion {
 
     // Endlosrekursion /vgl. Endlosschleife)
@@ -64,10 +66,39 @@ public class Rekursion {
     }
 
 
-    public static void main(String[] args) {
+    private static void towerOfHanoiSolution(int a, int position, int posMoving){
+        if(a==0) {
+            System.out.println("Fertig!");
+        } else {
+            if(position == 3) {
+                position = 0 + posMoving;
+            } else {
+                position += posMoving;
+            }
+            System.out.println(((position-posMoving > 0) ? position-posMoving:3+(position-posMoving)) + " an " + position);
+
+            System.out.println("Einzig möglichen Zug ausführen");
+
+            towerOfHanoiSolution(a-1, position, posMoving);
+        }
+    }
+
+
+    private static void runTowerOfHanoi(){
+        int count = 4;
+        int posMoving = (count % 2 == 0) ? 2 : 1;
+        towerOfHanoiSolution(count, 1, posMoving);
+    }
+
+    private static void runTvHR(){
         for(int i = 1; i <= 10; i++){
             System.out.print("\n" + i + ": ");
             tvHR(i);
         }
+    }
+
+
+    public static void main(String[] args) {
+        runTowerOfHanoi();
     }
 }
