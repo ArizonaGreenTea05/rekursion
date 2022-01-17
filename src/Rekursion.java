@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class Rekursion {
 
     // Endlosrekursion /vgl. Endlosschleife)
@@ -52,19 +50,6 @@ public class Rekursion {
         }
     }
 
-    private static void tvHR(int a, int b){
-        if (a == 1){
-            System.out.print("Die Zahl ist: " + b);
-        } else {
-            b = b * 2 + 1;
-            tvHR(a-1,b);
-        }
-    }
-
-    private static void tvHR(int a){
-        tvHR(a, 1);
-    }
-
 
     private static void towerOfHanoiSolution(int a, int position, int posMoving){
         if(a==0) {
@@ -93,12 +78,25 @@ public class Rekursion {
     private static void runTvHR(){
         for(int i = 1; i <= 10; i++){
             System.out.print("\n" + i + ": ");
-            tvHR(i);
+            tohCalculator(i);
         }
+    }
+
+    private static void tohCalculator(int a, int b){
+        if (a == 1){
+            System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
+        } else {
+            b = b * 2 + 1;
+            tohCalculator(a-1,b);
+        }
+    }
+
+    private static void tohCalculator(int count){
+        tohCalculator(count, 1);
     }
 
 
     public static void main(String[] args) {
-        runTowerOfHanoi();
+        tohCalculator(8);
     }
 }
