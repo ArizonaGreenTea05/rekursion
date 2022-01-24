@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Rekursion {
 
     // Endlosrekursion /vgl. Endlosschleife)
@@ -68,20 +70,6 @@ public class Rekursion {
         }
     }
 
-
-    private static void runTowerOfHanoi(){
-        int count = 4;
-        int posMoving = (count % 2 == 0) ? 2 : 1;
-        towerOfHanoiSolution(count, 1, posMoving);
-    }
-
-    private static void runTvHR(){
-        for(int i = 1; i <= 10; i++){
-            System.out.print("\n" + i + ": ");
-            tohCalculator(i);
-        }
-    }
-
     private static void tohCalculator(int a, int b){
         if (a == 1){
             System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
@@ -91,12 +79,48 @@ public class Rekursion {
         }
     }
 
-    private static void tohCalculator(int count){
+    private static void tohCalculator(){
+        Scanner in = new Scanner(System.in);
+        int count = -1;
+
+        System.out.println("Wie viele Steine wollen Sie verschieben?");
+        try {
+            count = in.nextInt();
+        }catch(Exception e){
+            System.err.println("WRONG INPUT");
+            System.exit(0);
+        }
+        if(count <= 0) {
+            System.err.println("WRONG INPUT");
+            System.exit(0);
+        }
+
         tohCalculator(count, 1);
     }
 
 
+    private static int hanoiCounter = 0;
+
+    private static void hanoi(int anzahl, String start, String destination, String temp){
+        if(anzahl > 1) {
+            hanoi(anzahl-1, start, temp, destination);
+        }
+
+        System.out.println("Verschiebe Scheibe von " + start + " nach " + destination);
+        hanoiCounter++;
+
+        if(anzahl > 1) {
+            hanoi(anzahl-1, temp, destination, start);
+        }
+
+    }
+
+
     public static void main(String[] args) {
-        tohCalculator(8);
+        /*
+        hanoi(10, "Turm 1", "Turm 3", "Turm 2");
+        System.out.println("Dies hat " + hanoiCounter + " Züge benötigt");
+         */
+        tohCalculator();
     }
 }
