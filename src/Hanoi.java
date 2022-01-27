@@ -6,17 +6,26 @@ public class Hanoi {
         return Utils.scanner("Wie viele Steine wollen Sie verschieben? ",1, Integer.MAX_VALUE);
     }
 
-    private static void tohCalculator(int a, int b){
+    private static void tohCalculatorRek(int a, int b){
         if (a == 1){
             System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
         } else {
             b = b * 2 + 1;
-            tohCalculator(a-1,b);
+            tohCalculatorRek(a-1,b);
         }
     }
 
+    private static void tohCalculatorIt(int a, int b){
+        for (int i = a; i > 1; i--) {
+            b = b * b;
+        }
+        b--;
+        System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
+    }
+
     private static void tohCalculator(){
-        tohCalculator(hanoiScanner(),1);
+        tohCalculatorRek(hanoiScanner(),1);
+        tohCalculatorIt(hanoiScanner(),2);
     }
 
 
@@ -52,10 +61,6 @@ public class Hanoi {
 
 
     public static void main(String[] args) {
-        Hanoi hanoi = new Hanoi();
-        System.out.println("Türme von Hanoi");
-        for (int i = 1; i < 10; i++) {
-            hanoi.hanoi(i);
-        }
+        tohCalculator();
     }
 }
