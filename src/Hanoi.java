@@ -20,40 +20,42 @@ public class Hanoi {
     }
 
 
-    private static int count;
-    private static int hanoiCounter;
+    private static int count = Integer.MIN_VALUE;
+    private static int hanoiCounter = Integer.MIN_VALUE;
 
-    private void hanoi(int count, String start, String destination, String temp){
+    private void _hanoi(int count, String start, String destination, String temp){
         if(count > 1) {
-            hanoi(count-1, start, temp, destination);
+            _hanoi(count-1, start, temp, destination);
         }
 
         hanoiCounter++;
         String s;
         if (count == this.count) {
-            s = "MITTE";
+            s = "MITTE: ";
         } else {
-            s = "     ";
+            s = "       ";
         }
         System.out.println(s + hanoiCounter +  ".: Verschiebe Scheibe von " + start + " nach " + destination);
 
         if(count > 1) {
-            hanoi(count-1, temp, destination, start);
+            _hanoi(count-1, temp, destination, start);
         }
 
     }
 
-    private void hanoi(int count){
-        System.out.println("Türme von Hanoi");
-        hanoi(count, "Turm 1", "Turm 3", "Turm 2");
-        System.out.println("Dies hat " + hanoiCounter + " Züge benötigt");
+    public void hanoi(int count){
+        this.count = count;
         hanoiCounter = 0;
+        _hanoi(count, "Turm 1", "Turm 3", "Turm 2");
+        System.out.println("Dies hat " + hanoiCounter + " Züge benötigt");
     }
 
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            new Hanoi().hanoi(i);
+        Hanoi hanoi = new Hanoi();
+        System.out.println("Türme von Hanoi");
+        for (int i = 1; i < 10; i++) {
+            hanoi.hanoi(i);
         }
     }
 }
