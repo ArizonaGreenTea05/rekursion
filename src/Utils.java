@@ -18,4 +18,17 @@ public class Utils {
         }while(i<minInput || i> maxInput);
         return i;
     }
+
+
+    public static String scanner(String out){
+        Scanner in = new Scanner(System.in);
+        String s = "";
+        System.out.print(out);
+        try {
+            s = in.nextLine();
+        } catch (Exception e) {
+            System.err.println("WRONG INPUT");
+        }
+        return s;
+    }
 }

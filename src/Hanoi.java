@@ -36,13 +36,13 @@ public class Hanoi {
 
     }
 
-    private static void hanoi(){
-        hanoi(hanoiScanner(), "Turm 1", "Turm 3", "Turm 2");
+    private static void hanoi(int count){
+        hanoi(count, "Turm 1", "Turm 3", "Turm 2");
         System.out.println("Dies hat " + hanoiCounter + " Züge benötigt");
     }
 
 
     public static void main(String[] args) {
-        hanoi();
+        hanoi(hanoiScanner());
     }
 }
