@@ -80,47 +80,35 @@ public class Rekursion {
     }
 
     private static void tohCalculator(){
-        Scanner in = new Scanner(System.in);
-        int count = -1;
 
-        System.out.println("Wie viele Steine wollen Sie verschieben?");
-        try {
-            count = in.nextInt();
-        }catch(Exception e){
-            System.err.println("WRONG INPUT");
-            System.exit(0);
-        }
-        if(count <= 0) {
-            System.err.println("WRONG INPUT");
-            System.exit(0);
-        }
 
-        tohCalculator(count, 1);
+        tohCalculator(Utils.scanner("Wie viele Steine wollen Sie verschieben? ",1, Integer.MAX_VALUE),1);
     }
 
 
     private static int hanoiCounter = 0;
 
-    private static void hanoi(int anzahl, String start, String destination, String temp){
-        if(anzahl > 1) {
-            hanoi(anzahl-1, start, temp, destination);
+    private static void hanoi(int count, String start, String destination, String temp){
+        if(count > 1) {
+            hanoi(count-1, start, temp, destination);
         }
 
         System.out.println("Verschiebe Scheibe von " + start + " nach " + destination);
         hanoiCounter++;
 
-        if(anzahl > 1) {
-            hanoi(anzahl-1, temp, destination, start);
+        if(count > 1) {
+            hanoi(count-1, temp, destination, start);
         }
 
     }
 
+    private static void hanoi(){
+        hanoi(Utils.scanner("Wie viele Steine wollen Sie verschieben? ",1, Integer.MAX_VALUE), "Turm 1", "Turm 3", "Turm 2");
+        System.out.println("Dies hat " + hanoiCounter + " Züge benötigt");
+    }
+
 
     public static void main(String[] args) {
-        /*
-        hanoi(10, "Turm 1", "Turm 3", "Turm 2");
-        System.out.println("Dies hat " + hanoiCounter + " Züge benötigt");
-         */
-        tohCalculator();
+        hanoi();
     }
 }
