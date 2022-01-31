@@ -38,7 +38,7 @@ public class Hanoi {
         tohCalculatorRek(a);
         System.out.println("\niterativ:");
         tohCalculatorIt(a);
-        System.out.println("\nFormel:");
+        System.out.println("\nper Formel:");
         tohCalculatorSimple(a);
     }
 
