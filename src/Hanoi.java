@@ -15,17 +15,31 @@ public class Hanoi {
         }
     }
 
-    private static void tohCalculatorIt(int a, int b){
-        for (int i = a; i > 1; i--) {
-            b = b * b;
+    private static void tohCalculatorRek(int a){
+        tohCalculatorRek(a,1);
+    }
+
+    private static void tohCalculatorIt(int a){
+        int b = 1;
+        for (; a > 1; a--) {
+            b = b * 2 + 1;
         }
-        b--;
+        System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
+    }
+
+    private static void tohCalculatorSimple(int a) {
+        int b = (int) Math.pow(2,a) -1;
         System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
     }
 
     private static void tohCalculator(){
-        tohCalculatorRek(hanoiScanner(),1);
-        tohCalculatorIt(hanoiScanner(),2);
+        int a = hanoiScanner();
+        System.out.println("rekursiv:");
+        tohCalculatorRek(a);
+        System.out.println("\niterativ:");
+        tohCalculatorIt(a);
+        System.out.println("\nFormel:");
+        tohCalculatorSimple(a);
     }
 
 
