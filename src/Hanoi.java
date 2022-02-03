@@ -6,6 +6,10 @@ public class Hanoi {
         return Utils.scanner("Wie viele Steine wollen Sie verschieben? ",1, Integer.MAX_VALUE);
     }
 
+    private static void tohCalculatorRek(int a){
+        tohCalculatorRek(a,1);
+    }
+
     private static void tohCalculatorRek(int a, int b){
         if (a == 1){
             System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
@@ -15,16 +19,13 @@ public class Hanoi {
         }
     }
 
-    private static void tohCalculatorRek(int a){
-        tohCalculatorRek(a,1);
-    }
-
     private static void tohCalculatorIt(int a){
-        int b = 1;
+        int counter
+                = 1;
         for (; a > 1; a--) {
-            b = b * 2 + 1;
+            counter = counter * 2 + 1;
         }
-        System.out.print("Die minimale Anzahl an Zügen beträgt: " + b);
+        System.out.print("Die minimale Anzahl an Zügen beträgt: " + counter);
     }
 
     private static void tohCalculatorSimple(int a) {
