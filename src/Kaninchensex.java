@@ -1,12 +1,13 @@
 public class Kaninchensex {
 
-    private void kaninchensex(int generation, int rammler, int bunnies, int anzahlGenerationen){
+    private String kaninchensex(int generation, int rammler, int bunnies, int anzahlGenerationen){
         int gesamt = rammler + bunnies;
         if(generation < anzahlGenerationen) {
             kaninchensex(generation + 1, gesamt, rammler, anzahlGenerationen);
         } else{
-            System.out.println("Generation: " + generation + "\nRammler: " + rammler + "\nBunnies: " + bunnies + "\nInsgesamt: " + gesamt + "\n\n");
+            return "Generation: " + generation + "\nRammler: " + rammler + "\nBunnies: " + bunnies + "\nInsgesamt: " + gesamt + "\n\n";
         }
+        return null;
     }
 
 
@@ -18,6 +19,6 @@ public class Kaninchensex {
      */
 
     public static void main(String[] args) {
-        new Kaninchensex().kaninchensex(0,0,1, 73);
+        System.out.println(new Kaninchensex().kaninchensex(0, 0, 1, 73));
     }
 }
