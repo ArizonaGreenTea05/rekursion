@@ -1,4 +1,4 @@
-public class Rekursion_17_02_22 {
+public class Rekursion_groß_klein {
 
     private static void upperLower(String todo, String finished){
         if(todo.length() == 0) {
