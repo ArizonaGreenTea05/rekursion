@@ -16,19 +16,37 @@ public class Klausur {
     }
 
     public static void sums(int[] a){
-        sums(a, 0,1);
+        long startRek = System.currentTimeMillis();
+        sums(a,0);
+        long stopRek = System.currentTimeMillis();
+        long startIt = System.currentTimeMillis();
+        sumsIt(a);
+        long stopIt = System.currentTimeMillis();
+        System.out.printf("rekursiv: %4d ms\niterativ: %4d ms", stopRek-startRek, stopIt-startIt);
     }
 
-    private static void sums(int[] a, int i, int j){
-        if(i == a.length-1){
+
+    private static void sums(int[] a, int start){
+        if(start == a.length-2) {
             return;
+        } else {
+            for (int i = start+1; i < a.length; i++) {
+                System.out.printf("%d + %d = %d\n", a[start],a[i], a[start]+a[i]);
+            }
+            sums(a, start+1);
         }
-        System.out.printf("%d + %d = %d\n", a[i], a[j], a[i+j]);
-        for (; j < a.length; j++) {
-            sums(a, i, j);
-        }
-        sums(a, i+1, i+2);
     }
+
+    private static void sumsIt(int[] a){
+        for (int i = 0; i < a.length-1; i++) {
+            for (int j = i+1; j < a.length; j++) {
+                System.out.printf("%d + %d = %d\n", a[i],a[j],a[i] + a[j]);
+            }
+        }
+    }
+
+
+
 
     private static int binarySearch(int[] a, int searched) {
         return binarySearch(a, searched, 0, a.length-1);
