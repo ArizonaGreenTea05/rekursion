@@ -4,7 +4,6 @@ public class Rekursion_Anordnung {
         if(todo.length() == 0) {
             System.out.println(finished);
         } else {
-
             for (int i = 0; i < todo.length(); i++) {
                 String rest = todo.substring(0,i) + todo.substring(i+1);
                 char c = todo.charAt(i);
