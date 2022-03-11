@@ -1,3 +1,8 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Klausur {
 
     public static void strange(int i){
@@ -11,23 +16,28 @@ public class Klausur {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{1,3,6,8,9};
-        sums(a);
+        String numbers = "789";
+        sums(numbers);
     }
 
-    public static void sums(int[] a){
-        sums(a, 0,1);
+    public static void sums(String numbers){
+        List<Integer> todo = new ArrayList<>();
+        for (int i = 0; i < numbers.length(); i++) {
+            todo.add(Integer.valueOf(numbers.substring(i,i+1)));
+        }
+        sums(todo,0,1);
     }
 
-    private static void sums(int[] a, int i, int j){
-        if(i == a.length-1){
-            return;
+    private static void sums(List<Integer> todo, int i, int j){
+        if(i == todo.size()-1 || j == todo.size()){
+            //do nothing
+        } else {
+            System.out.printf("%d + %d = %2d\n",todo.get(i), todo.get(j), todo.get(i) + todo.get(j));
+            sums(todo,i,j+1);
+            if(j>i+1) {
+                sums(todo, i + 1, j);
+            }
         }
-        System.out.printf("%d + %d = %d\n", a[i], a[j], a[i+j]);
-        for (; j < a.length; j++) {
-            sums(a, i, j);
-        }
-        sums(a, i+1, i+2);
     }
 
     private static int binarySearch(int[] a, int searched) {
