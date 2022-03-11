@@ -16,8 +16,7 @@ public class Klausur {
     }
 
     public static void main(String[] args) {
-        String numbers = "789";
-        sums(numbers);
+        sums("578");
     }
 
     public static void sums(String numbers){
@@ -29,14 +28,13 @@ public class Klausur {
     }
 
     private static void sums(List<Integer> todo, int i, int j){
-        if(i == todo.size()-1 || j == todo.size()){
+        if(i == todo.size()-1){
             //do nothing
+        } else if(j == todo.size()){
+            sums(todo, i+1, i+2);
         } else {
             System.out.printf("%d + %d = %2d\n",todo.get(i), todo.get(j), todo.get(i) + todo.get(j));
-            sums(todo,i,j+1);
-            if(j>i+1) {
-                sums(todo, i + 1, j);
-            }
+            sums(todo, i, j+1);
         }
     }
 
