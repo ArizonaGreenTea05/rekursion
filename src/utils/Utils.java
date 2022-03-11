@@ -1,3 +1,7 @@
+package utils;
+
+import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Utils {
@@ -30,5 +34,19 @@ public class Utils {
             System.err.println("WRONG INPUT");
         }
         return s;
+    }
+
+    private static String[] words = null;
+
+    public static boolean isWord(String word) {
+        if(words == null){
+            words = FileLoader.load("Sowpods.txt");
+        }
+        for (String s : words) {
+            if (s.equalsIgnoreCase(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
